@@ -1,5 +1,7 @@
 pandas
 seaborn
 geopandas
-
+contextily
 ipykernel
+folium
+mapclassify
