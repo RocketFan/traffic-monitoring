@@ -1,1 +1,6 @@
-data
+data/*
+!data/grids/
+build
+
+*.pdf
+*.egg-info
