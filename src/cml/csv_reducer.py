@@ -9,22 +9,6 @@ class CSVReducer:
         self.data_path_to_save = path_to_save
         self.df = None
         self.main_roads_df = None
-        self.street_names = {
-        "Ponte Vasco da Gama": [3651, 3629],
-        "A36": [3563, 3564, 3565],
-        "IC16": [3680, 3681, 3662, 3663],
-        "N117": [933, 934, 990],
-        "Marginal": [75, 76, 106],
-        "IC2 (Sacavém)": [3736, 3728],
-        "A1": [3524, 3564],
-        "Calcada De Carriche": [3460, 3500, 3501],
-        "IC19": [1758, 1759, 1699, 1698],
-        "A5": [757, 758],
-        "Ponte 25 Abril 102/103": [102, 103],
-        "A16" : [2656, 2594],
-        # "Terminal Fluvial do Cais Do Sodre": [303, 304],
-        # "Terrerio do Paco - Terminal Fluvial": [356, 357,358],
-        }
         os.makedirs(self.data_path_to_save, exist_ok=True)
 
     def read(self):
