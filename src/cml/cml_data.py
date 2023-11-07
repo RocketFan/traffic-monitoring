@@ -6,7 +6,7 @@ class CMLData:
     def __init__(self, dir_path):
         self.dir_path = dir_path
 
-    def read():
+    def read(self):
         csv_files = glob.glob(os.path.join(self.dir_path, '*.csv'))
         dfs = []
 
