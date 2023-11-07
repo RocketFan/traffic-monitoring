@@ -5,3 +5,4 @@ contextily
 ipykernel
 folium
 mapclassify
+ipyleaflet
