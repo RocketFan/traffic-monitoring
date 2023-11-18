@@ -23,7 +23,17 @@ class CSVReducer:
             self.df = self.df.sort_values(by=['Grid_ID'])
             self.save_csv(os.path.join(self.data_path_to_save, os.path.basename(file)))
 
-    def save_csv(self, path):
+    def save_csv(self, path, suffix="_reduced"):
         base, ext = os.path.splitext(path)
-        new_path = f"{base}_reduced{ext}"
+        new_path = f"{base}{suffix}{ext}"
         self.df.to_csv(new_path, index=False)
+
+    def interpolate_data(self):
+        csv_files = glob.glob(os.path.join(self.data_path, "*.csv"))
+        for file in csv_files:
+            self.df = pd.read_csv(file, low_memory=False)
+            self.df = self.df.interpolate(method='linear', limit_direction='forward', axis=0)
+            for col in self.df.columns:
+                if self.df[col].dropna().apply(float.is_integer).all():  # Check if all non-NaN values are integers
+                    self.df[col] = self.df[col].astype(int)
+            self.save_csv(os.path.join(self.data_path_to_save, os.path.basename(file)), "_interpolated")

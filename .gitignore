@@ -1,7 +1,7 @@
 data/*
 !data/grids/
 build
-
+.vscode
 *.pdf
 *.egg-info
 src/cml/__pycache__/*
