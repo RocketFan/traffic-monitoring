@@ -4,6 +4,5 @@ build
 
 *.pdf
 *.egg-info
-src/cml/__pycache__/__init__.cpython-311.pyc
-src/cml/__pycache__/csv_reducer.cpython-311.pyc
+src/cml/__pycache__/*
 .DS_Store
