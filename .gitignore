@@ -1,6 +1,8 @@
 data/*
 !data/grids/
 build
-
+.vscode
 *.pdf
 *.egg-info
+src/cml/__pycache__/*
+.DS_Store
