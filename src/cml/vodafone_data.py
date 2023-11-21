@@ -4,7 +4,7 @@ import os
 
 class VodafoneData:
     def __init__(self):
-        self.trash_columns = ['Unnamed: 0', 'Unnamed: 0.1', 'extract_year', 'extract_month', 'extract_day', 'extract_year_2', 'extract_month_3', 'extract_day_4']
+        self.trash_columns = ['Unnamed: 0', 'Unnamed: 0.1', 'extract_year', 'extract_month', 'extract_day', 'extract_year_2', 'extract_month_3', 'extract_day_4', 'C12', 'C13', 'E6', 'E10']
 
     def read(self, dir_path):
         csv_files = glob.glob(os.path.join(dir_path, '*.csv'))

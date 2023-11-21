@@ -2,10 +2,12 @@ import pandas as pd
 import glob
 import os
 import argparse
+from cml.vodafone_data import VodafoneData
 
 class VodafoneReducer:
     def __init__(self):
         self.grids_id = []
+        self.vodafone_data_helper = VodafoneData()
 
     def load_grids(self, grids_path):
         girds_df = pd.read_csv(grids_path, low_memory=False)
@@ -17,14 +19,16 @@ class VodafoneReducer:
 
         for file in csv_files:
             df = pd.read_csv(file, low_memory=False)
-            self.reduce(df)
+            df = self.reduce(df)
             file_path = os.path.join(save_path, os.path.basename(file))
             self.save(df, file_path)
 
     def reduce(self, df):
-        df = df.interpolate(method='linear', limit_direction='forward', axis=0)
         df = df[df["Grid_ID"].isin(self.grids_id)]
-        df = df.sort_values(by=['Grid_ID'])
+        self.vodafone_data_helper.clean(df)
+        df.sort_values(by=['Grid_ID', 'Datetime'], inplace=True)
+        df.interpolate(method='linear', limit_direction='forward', axis=0, inplace=True)
+        return df
 
     def save(self, df, path, suffix="_reduced"):
         base, ext = os.path.splitext(path)
